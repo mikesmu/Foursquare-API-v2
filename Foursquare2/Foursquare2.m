@@ -1460,9 +1460,8 @@ static NSMutableDictionary *attributes;
 
 - (void)webLogin:(FSWebLogin *)loginViewController didFinishWithError:(NSError *)error {
     [loginViewController.presentingViewController dismissViewControllerAnimated:YES completion:nil];
-    if (error) {
-        [Foursquare2 callAuthorizationCallbackWithError:error];
-    }
+    // even if error = nil, call the callback 
+    [Foursquare2 callAuthorizationCallbackWithError:error];
 }
 
 + (void)callAuthorizationCallbackWithError:(NSError *)error {
